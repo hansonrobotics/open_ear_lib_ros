@@ -106,7 +106,7 @@ bin_PROGRAMS =
 	src/semaineEmmaSender.cpp 
 
   SMILE_CPPFLAGS = -Isrc $(SEMAINEAPI_CPPFLAGS) $(PORTAUDIO_CPPFLAGS) -ggdb $(ATKLIB_CPPFLAGS) $(PTHREAD_CFLAGS) $(RTNNLLIB_CFLAGS)
-  SMILE_LIBS = $(PORTAUDIO_LDFLAGS) -lm $(SEMAINEAPI_LDFLAGS) $(ATKLIB_LDFLAGS) $(PTHREAD_LIBS) $(DLIB) $(RTNNLLIB_LIBS) -L/opt/ros/hydro/lib -lroscpp
+  SMILE_LIBS = $(PORTAUDIO_LDFLAGS) -lm $(SEMAINEAPI_LDFLAGS) $(ATKLIB_LDFLAGS) $(PTHREAD_LIBS) $(DLIB) $(RTNNLLIB_LIBS) -L/opt/ros/$(ROS_DISTRO)/lib -lroscpp
 
 $(info PThread = $(PTHREAD_LIBS))
    
@@ -124,7 +124,10 @@ $(info PThread = $(PTHREAD_LIBS))
   libopensmile_la_LIBADD = $(SMILE_LIBS)
   libopensmile_la_LDFLAGS = --no-undefined
 
-
+  openEarincludedir = $(includedir)/ros_open_ear
+  openEarinclude_HEADERS = \
+  src/*.hpp \
+  src/*.h
 # endif 
 
 
